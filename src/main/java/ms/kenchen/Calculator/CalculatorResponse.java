@@ -22,5 +22,4 @@ public class CalculatorResponse {
     public int getResult() { return _result; }
 
     public String getTime() { return _time; }
-
 }
