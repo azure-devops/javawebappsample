@@ -8,6 +8,7 @@ node {
   }
   
   stage('deploy') {
+    sh 'printenv'
     sh 'echo ${BUILD_TAG}'
     // docker build -t calculator .
     // docker tag
