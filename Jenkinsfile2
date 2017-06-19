@@ -1,0 +1,26 @@
+node {
+  stage('init') {
+    checkout scm
+  }
+  
+  stage('build') {
+    sh 'mvn clean package'
+  }
+  
+  stage('deploy') {
+    sh 'echo ${BUILD_TAG}'
+    // docker build -t calculator .
+    // docker tag
+    def resourceGroup = 'kenchenwebapplinux1'
+    def webAppName = 'kenchenwebapplinux1'
+    // login Azure
+    withCredentials([azureServicePrincipal('vs_china_jenkins')]) {
+      sh '''
+        az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
+        az account set -s $AZURE_SUBSCRIPTION_ID
+      '''
+    }
+    // log out
+    sh 'az logout'
+  }
+}
