@@ -13,7 +13,7 @@ public class CalculatorService {
     @Path("ping")
     @Produces(MediaType.TEXT_PLAIN)
     public String ping() {
-        return "pong!\n" + new Date().toString();
+        return "Hello!!!\n" + new Date().toString();
     }
 
     @GET
