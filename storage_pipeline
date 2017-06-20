@@ -1,0 +1,12 @@
+node {
+    stage('init') {
+        checkout scm
+    }
+    stage('build') {
+        sh 'mvn clean package'
+    }
+    stage('dist') {
+        azureUpload storageCredentialId: 'kenchenjenkinsdemotmpl', storageType: 'blobstorage', containerName: 'demo', filesPath: 'target/*.war', virtualPath: '${BUILD_TAG}'
+        archive 'target/*.war'
+   }
+}
