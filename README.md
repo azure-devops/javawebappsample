@@ -59,5 +59,3 @@ Rename the `.war` file in `target` folder to `ROOT.war` and upload it to your Az
    * Credentials binding
 4. To deploy using FTP, create a Jenkins pipeline with `Jenkinsfile` as pipeline file.
 5. To deploy using container, create a Jenkins pipeline with `Jenkinsfile2` as pipeline file.
-
-
