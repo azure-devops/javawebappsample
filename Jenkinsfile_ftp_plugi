@@ -1,0 +1,18 @@
+node {
+  stage('init') {
+    checkout scm
+  }
+  
+  stage('build') {
+    sh 'mvn clean package'
+  }
+  
+  stage('deploy') {
+    def resourceGroup = '<myResourceGroup>'
+    def webAppName = '<myAppName>'
+    sh 'mv target/*.war target/ROOT.war'
+    azureWebAppPublish azureCredentialsId: '<mySp>', publishType: 'file',
+                       resourceGroup: resourceGroup, appName: webAppName,
+                       filePath: '*.war', sourceDirectory: 'target', targetDirectory: 'webapps'
+  }
+}
