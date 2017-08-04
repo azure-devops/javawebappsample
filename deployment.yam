@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: calculator
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: calculator
+    spec:
+      containers:
+      - name: calculator
+        image: <image>:$version
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: <imagePullSecrets>
