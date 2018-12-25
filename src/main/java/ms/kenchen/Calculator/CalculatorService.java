@@ -13,7 +13,7 @@ public class CalculatorService {
     @Path("ping")
     @Produces(MediaType.TEXT_PLAIN)
     public String ping() {
-        return "Welcome to celstream Java Web App!!! This is updated!\n" + new Date().toString();
+        return "Welcome to celstream Java Web App by Roopesh!!! This is updated!\n" + new Date().toString();
     }
 
     @GET
